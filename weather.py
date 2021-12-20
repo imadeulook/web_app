@@ -4,12 +4,12 @@ import time
 
 def getWeather(canvas):
     city = textfield.get()
-    api = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=db939219219da99dc447412185c03a49"
+    api = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=db939219219da99dc447412185c03a49&units=metric"
     json_data = requests.get(api).json()
     condition = json_data['weather'][0]['main']
-    temp = int(json_data['main']['temp'] - 273.15)
-    temp_min = int(json_data['main']['temp_min'] - 273.15)
-    temp_max = int(json_data['main']['temp_max'] - 273.15)
+    temp = json_data['main']['temp']
+    temp_min = json_data['main']['temp_min']
+    temp_max = json_data['main']['temp_max']
     pressure = json_data['main']['pressure']
     humidity = json_data['main']['humidity']
     wind = json_data ['wind']['speed']
